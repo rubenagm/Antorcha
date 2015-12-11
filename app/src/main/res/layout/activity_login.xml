@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#232C39"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mx.antorcha.Activities.Login">
+    <LinearLayout
+        android:layout_marginRight="13dp"
+        android:layout_marginLeft="13dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:src="@drawable/logo_antorcha"
+            android:layout_weight="4"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" />
+        <TextView
+            android:textSize="25sp"
+            android:fontFamily="sans-serif-light"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:text="Bienvenido de vuelta"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <EditText
+            android:background="#FFFFFF"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <EditText
+            android:layout_marginBottom="25dp"
+            android:background="#FFFFFF"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <TextView
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:fontFamily="sans-serif-light"
+            android:text="¿Olvidaste tu contraseña?"
+            android:layout_weight=".5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <ImageView
+            android:layout_weight=".5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+        <LinearLayout
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <com.facebook.login.widget.LoginButton
+                android:layout_weight="1"
+                android:id="@+id/login_button"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
