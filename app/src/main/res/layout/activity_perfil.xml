@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         />
+
     <com.mx.antorcha.LibreriaTabsSliding.SlidingTabLayout
         android:id="@+id/perfil_tabs"
         android:layout_width="match_parent"
