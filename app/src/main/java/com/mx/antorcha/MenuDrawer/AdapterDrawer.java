@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.mx.antorcha.Activities.BuscarActividad;
 import com.mx.antorcha.Activities.Medallas;
 import com.mx.antorcha.Activities.Perfil;
 import com.mx.antorcha.AdaptadorSVG.AdaptadorSVG;
@@ -34,7 +35,7 @@ public class AdapterDrawer extends ArrayAdapter<String> {
     LinearLayout linearLayoutMedallas;
     LinearLayout linearLayoutMetas;
 
-    Context activity;
+    Activity activity;
 
     public AdapterDrawer(Activity activity, int resource, ArrayList<String> palabra) {
         super(activity, resource, palabra);
@@ -85,6 +86,15 @@ public class AdapterDrawer extends ArrayAdapter<String> {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, Medallas.class);
                 activity.startActivity(intent);
+            }
+        });
+
+        linearLayoutBuscarActividad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, BuscarActividad.class);
+                activity.startActivity(intent);
+
             }
         });
 
