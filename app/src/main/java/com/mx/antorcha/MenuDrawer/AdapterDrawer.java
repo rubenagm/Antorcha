@@ -1,7 +1,6 @@
 package com.mx.antorcha.MenuDrawer;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.widget.LinearLayout;
 
 import com.mx.antorcha.Activities.BuscarActividad;
 import com.mx.antorcha.Activities.Medallas;
+import com.mx.antorcha.Activities.Metas;
 import com.mx.antorcha.Activities.Perfil;
 import com.mx.antorcha.AdaptadorSVG.AdaptadorSVG;
 import com.mx.antorcha.R;
@@ -95,6 +95,14 @@ public class AdapterDrawer extends ArrayAdapter<String> {
                 Intent intent = new Intent(activity, BuscarActividad.class);
                 activity.startActivity(intent);
 
+            }
+        });
+
+        linearLayoutMetas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, Metas.class);
+                activity.startActivity(intent);
             }
         });
 

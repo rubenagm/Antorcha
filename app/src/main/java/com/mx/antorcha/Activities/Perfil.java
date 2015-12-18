@@ -28,5 +28,7 @@ public class Perfil extends AppCompatActivity {
 
         SlidingTabLayout slidingTabLayout = (SlidingTabLayout) findViewById(R.id.perfil_tabs);
         slidingTabLayout.setDistributeEvenly(true);
+
+        slidingTabLayout.setViewPager(viewPager);
     }
 }
