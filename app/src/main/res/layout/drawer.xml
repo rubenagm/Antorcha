@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
+        android:src="@drawable/com_facebook_profile_picture_blank_portrait"
         android:id="@+id/drawer_imagen_perfil"
         android:layout_width="match_parent"
         android:layout_height="140dp" />
     <RelativeLayout
-        android:alpha=".3"
-        android:background="#000000"
+        android:background="@drawable/degradado_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"></RelativeLayout>
+        android:layout_height="45dp"></RelativeLayout>
     <LinearLayout
         android:layout_marginLeft="20dp"
         android:orientation="vertical"
@@ -25,12 +25,16 @@
             android:layout_width="match_parent"
             android:layout_height="50dp">
             <ImageView
+
                 android:alpha=".5"
                 android:layout_gravity="center_vertical"
                 android:id="@+id/drawer_icono_buscar_actividad"
                 android:layout_width="28dp"
                 android:layout_height="28dp" />
             <TextView
+                android:alpha=".7"
+                android:textColor="#000000"
+                android:textStyle="bold"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="28dp"
                 android:layout_gravity="center_vertical"
@@ -51,6 +55,9 @@
                 android:layout_width="28dp"
                 android:layout_height="28dp" />
             <TextView
+                android:alpha=".7"
+                android:textColor="#000000"
+                android:textStyle="bold"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="28dp"
                 android:layout_gravity="center_vertical"
@@ -71,6 +78,9 @@
                 android:layout_width="28dp"
                 android:layout_height="28dp" />
             <TextView
+                android:alpha=".7"
+                android:textColor="#000000"
+                android:textStyle="bold"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="28dp"
                 android:layout_gravity="center_vertical"
@@ -91,6 +101,9 @@
                 android:layout_width="28dp"
                 android:layout_height="28dp" />
             <TextView
+                android:alpha=".7"
+                android:textColor="#000000"
+                android:textStyle="bold"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="28dp"
                 android:layout_gravity="center_vertical"
@@ -111,6 +124,9 @@
                 android:layout_width="28dp"
                 android:layout_height="28dp" />
             <TextView
+                android:alpha=".7"
+                android:textColor="#000000"
+                android:textStyle="bold"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="28dp"
                 android:layout_gravity="center_vertical"

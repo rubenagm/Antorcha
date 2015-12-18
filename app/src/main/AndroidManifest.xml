@@ -45,13 +45,14 @@
         <activity android:name=".Activities.Principal" />
         <activity android:name=".Activities.Perfil" />
         <activity android:name=".Activities.Medallas" />
-
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".Activities.BuscarActividad"></activity>
+        <activity android:name=".Activities.BuscarActividad" />
+        <activity android:name=".Activities.Metas" />
+        <activity android:name=".Activities.NuevaMeta"></activity>
     </application>
 
 </manifest>
