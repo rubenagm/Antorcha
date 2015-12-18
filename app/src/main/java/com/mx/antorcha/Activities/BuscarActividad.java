@@ -5,13 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
 import com.mx.antorcha.Adaptadores.AdaptadorBuscarActividadTabs;
 import com.mx.antorcha.LibreriaTabsSliding.SlidingTabLayout;
 import com.mx.antorcha.R;
 
 public class BuscarActividad extends AppCompatActivity {
 
-
+    GoogleMap googleMap;
+    MapView mapView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +37,5 @@ public class BuscarActividad extends AppCompatActivity {
         slidingTabLayout.setDistributeEvenly(true);
 
         slidingTabLayout.setViewPager(viewPager);
-
     }
-
-
-
 }

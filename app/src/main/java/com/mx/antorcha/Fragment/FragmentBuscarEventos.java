@@ -2,10 +2,12 @@ package com.mx.antorcha.Fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.SupportMapFragment;
 import com.mx.antorcha.R;
 
 /**
@@ -19,4 +21,5 @@ public class FragmentBuscarEventos extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_buscar_evento, container, false);
         return rootView;
     }
+
 }

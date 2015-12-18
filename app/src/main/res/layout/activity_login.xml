@@ -31,12 +31,14 @@
             android:layout_weight="1"
             android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
+            android:hint="Correo Electronico"
             android:layout_height="0dp" />
         <EditText
             android:layout_marginBottom="25dp"
             android:background="#FFFFFF"
             android:layout_weight="1"
             android:layout_width="match_parent"
+            android:hint="Contraseña"
             android:layout_height="0dp" />
         <ImageView
             android:layout_weight="1"

@@ -18,8 +18,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:name="com.google.android.gms.maps.MapFragment"
+                android:id="@+id/map_fragment_espacio" />
 
-           <!-- AQUÍ DENTRO VA TODO LO QUE SE VEA DENTRO DEL ACTIVITY-->
+            <!-- AQUÍ DENTRO VA TODO LO QUE SE VEA DENTRO DEL ACTIVITY-->
         </RelativeLayout>
 
         <!-- SLIDING LAYOUT AQUÍ NO VA NADA DEL MAPA-->

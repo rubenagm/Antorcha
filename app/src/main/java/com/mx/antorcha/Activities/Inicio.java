@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.facebook.FacebookSdk;
 import com.mx.antorcha.AdaptadorSVG.AdaptadorSVG;
 import com.mx.antorcha.R;
 
@@ -18,7 +19,7 @@ public class Inicio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
-
+        FacebookSdk.sdkInitialize(getApplicationContext());
         //Se inicializan los objetos del layout
         imageViewRegistrarse = (ImageView) findViewById(R.id.inicio_image_registrarse);
         imageViewIniciarSesion = (ImageView) findViewById(R.id.inicio_image_iniciar_sesion);
@@ -27,7 +28,7 @@ public class Inicio extends AppCompatActivity {
         imageViewIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Inicio.this, Principal.class);
+                Intent intent = new Intent(Inicio.this, Login.class);
                 startActivity(intent);
             }
         });
@@ -36,7 +37,7 @@ public class Inicio extends AppCompatActivity {
         imageViewRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Inicio.this, Login.class);
+                Intent intent = new Intent(Inicio.this, Registro.class);
                 startActivity(intent);
             }
         });
