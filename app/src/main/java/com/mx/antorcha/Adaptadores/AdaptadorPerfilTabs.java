@@ -1,5 +1,6 @@
 package com.mx.antorcha.Adaptadores;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,8 +15,11 @@ import com.mx.antorcha.Fragment.FragmentPerfilPerfil;
  */
 public class AdaptadorPerfilTabs extends FragmentStatePagerAdapter {
 
-    public AdaptadorPerfilTabs(FragmentManager fm) {
+    private Activity activity;
+
+    public AdaptadorPerfilTabs(FragmentManager fm, Activity activity) {
         super(fm);
+        this.activity = activity;
     }
 
     @Override
@@ -23,11 +27,13 @@ public class AdaptadorPerfilTabs extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0 :
-
-                return new FragmentPerfilPerfil();
+                FragmentPerfilPerfil fragmentPerfilPerfil = new FragmentPerfilPerfil();
+                fragmentPerfilPerfil.setActivity(activity);
+                return fragmentPerfilPerfil;
             case 1 :
-
-                return new FragmentPerfilDeportes();
+                FragmentPerfilDeportes fragmentPerfilDeportes = new FragmentPerfilDeportes();
+                fragmentPerfilDeportes.setActivity(activity);
+                return fragmentPerfilDeportes;
             default:
 
                 return null;
@@ -37,5 +43,18 @@ public class AdaptadorPerfilTabs extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return 2;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+
+        switch (position) {
+            case 0:
+                return "Personal";
+            case 1:
+                return "Deportes";
+            default:
+                return "Tab";
+        }
     }
 }

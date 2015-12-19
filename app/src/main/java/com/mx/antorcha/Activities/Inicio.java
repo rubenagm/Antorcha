@@ -28,7 +28,7 @@ public class Inicio extends AppCompatActivity {
         imageViewIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Inicio.this, Login.class);
+                Intent intent = new Intent(Inicio.this, Principal.class);
                 startActivity(intent);
             }
         });
