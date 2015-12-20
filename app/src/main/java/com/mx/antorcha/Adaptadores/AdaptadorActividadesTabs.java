@@ -5,17 +5,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.mx.antorcha.Fragment.FragmentBuscarEspacio;
-import com.mx.antorcha.Fragment.FragmentBuscarEventos;
+import com.mx.antorcha.Fragment.FragmentActividadesEspacio;
+import com.mx.antorcha.Fragment.FragmentActividadesEvento;
 
-/**
- * Created by Ruben on 15/12/2015.
- */
-public class AdaptadorBuscarActividadTabs extends FragmentStatePagerAdapter {
+public class AdaptadorActividadesTabs extends FragmentStatePagerAdapter{
 
     private Activity activity;
 
-    public AdaptadorBuscarActividadTabs(FragmentManager fm, Activity activity) {
+    public AdaptadorActividadesTabs(FragmentManager fm, Activity activity) {
         super(fm);
         this.activity = activity;
     }
@@ -25,12 +22,13 @@ public class AdaptadorBuscarActividadTabs extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0 :
-                FragmentBuscarEspacio fragmentBuscarEspacio = new FragmentBuscarEspacio();
-                fragmentBuscarEspacio.setActivity(activity);
-                return fragmentBuscarEspacio;
+                FragmentActividadesEspacio fragmentActividadesEspacio = new FragmentActividadesEspacio();
+                fragmentActividadesEspacio.setActivity(activity);
+                return fragmentActividadesEspacio;
             case 1 :
-
-                return new FragmentBuscarEventos();
+                FragmentActividadesEvento fragmentActividadesEvento = new FragmentActividadesEvento();
+                fragmentActividadesEvento.setActivity(activity);
+                return fragmentActividadesEvento;
             default:
 
                 return null;

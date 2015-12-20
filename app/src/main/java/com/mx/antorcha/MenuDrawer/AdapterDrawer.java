@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.mx.antorcha.Activities.Actividades;
 import com.mx.antorcha.Activities.BuscarActividad;
 import com.mx.antorcha.Activities.Medallas;
 import com.mx.antorcha.Activities.Metas;
@@ -102,6 +103,14 @@ public class AdapterDrawer extends ArrayAdapter<String> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity, Metas.class);
+                activity.startActivity(intent);
+            }
+        });
+
+        linearLayoutActividades.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, Actividades.class);
                 activity.startActivity(intent);
             }
         });

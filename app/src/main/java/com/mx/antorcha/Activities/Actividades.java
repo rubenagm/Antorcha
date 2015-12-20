@@ -11,17 +11,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.mx.antorcha.AdaptadorSVG.AdaptadorSVG;
-import com.mx.antorcha.Adaptadores.AdaptadorBuscarActividadTabs;
+import com.mx.antorcha.Adaptadores.AdaptadorActividadesTabs;
+import com.mx.antorcha.Adaptadores.AdaptadorPerfilTabs;
 import com.mx.antorcha.LibreriaTabsSliding.SlidingTabLayout;
 import com.mx.antorcha.MenuDrawer.AdapterDrawer;
 import com.mx.antorcha.R;
 
 import java.util.ArrayList;
 
-public class BuscarActividad extends AppCompatActivity {
+public class Actividades extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private ListView listView;
@@ -29,10 +28,10 @@ public class BuscarActividad extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buscar_actividad);
+        setContentView(R.layout.activity_actividades);
 
         //se carga la barra de android por el xml
-        Toolbar toolbar = (Toolbar) findViewById(R.id.buscar_actividad_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.actividades_toolbar);
         setSupportActionBar(toolbar);
 
         //se carga el drawer
@@ -43,7 +42,7 @@ public class BuscarActividad extends AppCompatActivity {
         listView.setAdapter(new AdapterDrawer(this, R.layout.drawer, arrayList));
 
         //Se muestra el boton del drawer
-        ImageView imageViewDrawer = (ImageView) findViewById(R.id.buscar_actividad_barra_drawer);
+        ImageView imageViewDrawer = (ImageView) findViewById(R.id.actividades_barra_drawer);
         AdaptadorSVG.mostrarImagen(imageViewDrawer, this, R.raw.icono_menu_drawer);
 
         imageViewDrawer.setOnClickListener(new View.OnClickListener() {
@@ -51,18 +50,14 @@ public class BuscarActividad extends AppCompatActivity {
             public void onClick(View v) {
                 drawerLayout.openDrawer(Gravity.LEFT);
             }
-        });
+        });;
 
-        //se crea el adaptador para las tabs de la activity
-        AdaptadorBuscarActividadTabs adaptadorBuscarActividadTabs = new AdaptadorBuscarActividadTabs(
-                getSupportFragmentManager(), this);
+        AdaptadorActividadesTabs adaptadorActividadesTabs = new AdaptadorActividadesTabs(getSupportFragmentManager(), this);
 
-        //las páginas de las tabs
-        ViewPager viewPager = (ViewPager) findViewById(R.id.buscar_actividad_pager);
-        viewPager.setAdapter(adaptadorBuscarActividadTabs);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.actividades_pager);
+        viewPager.setAdapter(adaptadorActividadesTabs);
 
-        //Sliding
-        SlidingTabLayout slidingTabLayout = (SlidingTabLayout) findViewById(R.id.buscar_actividad_tabs);
+        SlidingTabLayout slidingTabLayout = (SlidingTabLayout) findViewById(R.id.actividades_tabs);
         slidingTabLayout.setDistributeEvenly(true);
         slidingTabLayout.setSelectedIndicatorColors(Color.WHITE);
         slidingTabLayout.setViewPager(viewPager);

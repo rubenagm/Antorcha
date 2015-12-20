@@ -37,6 +37,8 @@
             android:focusable="false"
             android:orientation="vertical">
 
+            <!-- SE AGREGA LA PARTE VISUAL DEL SLIDING-->
+            <include layout="@layout/sliding_buscar_actividades_espacio"/>
         </LinearLayout>
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 </RelativeLayout>
