@@ -29,8 +29,9 @@ public class AdaptadorBuscarActividadTabs extends FragmentStatePagerAdapter {
                 fragmentBuscarEspacio.setActivity(activity);
                 return fragmentBuscarEspacio;
             case 1 :
-
-                return new FragmentBuscarEventos();
+                FragmentBuscarEventos fragmentBuscarEventos = new FragmentBuscarEventos();
+                fragmentBuscarEventos.setActivity(activity);
+                return fragmentBuscarEventos;
             default:
 
                 return null;

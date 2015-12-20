@@ -34,11 +34,10 @@
             android:id="@+id/dragView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#A9E2F3"
             android:clickable="true"
             android:focusable="false"
             android:orientation="vertical">
-
+            <include layout="@layout/sliding_buscar_actividades_evento"/>
         </LinearLayout>
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 </RelativeLayout>

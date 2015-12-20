@@ -26,9 +26,11 @@ public class FragmentBuscarEspacio extends Fragment {
         //Se cargan las imagenes de los icono de contacto
         ImageView imageViewCompartir = (ImageView) rootView.findViewById(R.id.sliding_buscar_actividades_espacio_compartir);
         ImageView imageViewContacto = (ImageView) rootView.findViewById(R.id.sliding_buscar_actividades_espacio_contacto);
+        ImageView imageViewLapiz = (ImageView) rootView.findViewById(R.id.sliding_buscar_actividades_espacio_lapiz);
 
         AdaptadorSVG.mostrarImagen(imageViewCompartir, activity, R.raw.icono_compartir);
         AdaptadorSVG.mostrarImagen(imageViewContacto, activity, R.raw.icono_llamada);
+        AdaptadorSVG.mostrarImagen(imageViewLapiz, activity, R.raw.icono_lapiz);
         return rootView;
     }
 

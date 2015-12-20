@@ -79,6 +79,7 @@ public class AdapterDrawer extends ArrayAdapter<String> {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, Perfil.class);
                 activity.startActivity(intent);
+                activity.finish();
             }
         });
 
@@ -87,6 +88,7 @@ public class AdapterDrawer extends ArrayAdapter<String> {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, Medallas.class);
                 activity.startActivity(intent);
+                activity.finish();
             }
         });
 
@@ -95,6 +97,7 @@ public class AdapterDrawer extends ArrayAdapter<String> {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, BuscarActividad.class);
                 activity.startActivity(intent);
+                activity.finish();
 
             }
         });
@@ -104,6 +107,7 @@ public class AdapterDrawer extends ArrayAdapter<String> {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, Metas.class);
                 activity.startActivity(intent);
+                activity.finish();
             }
         });
 
@@ -112,6 +116,7 @@ public class AdapterDrawer extends ArrayAdapter<String> {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, Actividades.class);
                 activity.startActivity(intent);
+                activity.finish();
             }
         });
 
