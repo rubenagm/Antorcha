@@ -29,16 +29,16 @@
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:id="@+id/item_metas_progress"
+                android:id="@+id/item_meta_progress"
                 android:layout_width="290dp"
                 android:layout_height="230dp"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:indeterminate="false"
-                android:progress="75"
                 android:max="100"
                 android:secondaryProgress="100"
                 android:progressDrawable="@drawable/progress_circular" />
             <TextView
+                android:id="@+id/item_meta_porcentaje"
                 android:textColor="#FF9522"
                 android:fontFamily="sans-serif-light"
                 android:textSize="70sp"
@@ -54,6 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/item_meta_nombre_meta"
                 android:layout_marginBottom="5dp"
                 android:textSize="17sp"
                 android:text="Nombre de la meta"
@@ -66,6 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/item_meta_inicio"
                     android:textSize="27sp"
                     android:gravity="center"
                     android:text="65Kg"
@@ -79,6 +81,7 @@
                     android:layout_width="0dp"
                     android:layout_height="7dp" />
                 <TextView
+                    android:id="@+id/item_meta_fin"
                     android:textSize="27sp"
                     android:gravity="center"
                     android:text="65Kg"

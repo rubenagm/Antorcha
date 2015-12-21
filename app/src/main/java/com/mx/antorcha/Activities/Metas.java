@@ -16,6 +16,7 @@ import android.widget.ListView;
 
 import com.mx.antorcha.AdaptadorSVG.AdaptadorSVG;
 import com.mx.antorcha.Adaptadores.AdaptadorListaMetas;
+import com.mx.antorcha.BaseDatos.ConexionBaseDatosObtener;
 import com.mx.antorcha.MenuDrawer.AdapterDrawer;
 import com.mx.antorcha.Modelos.Meta;
 import com.mx.antorcha.R;
@@ -69,13 +70,16 @@ public class Metas extends AppCompatActivity {
             }
         });
 
-        /**************/
+        /**************
         //VARIABLES PARA PRUEBAS
         ArrayList<Meta> metas = new ArrayList<>();
         metas.add(new Meta());
         metas.add(new Meta());
         metas.add(new Meta());
         /**************/
+
+        ConexionBaseDatosObtener conexionBaseDatosObtener = new ConexionBaseDatosObtener(this);
+        ArrayList<Meta> metas = conexionBaseDatosObtener.obtenerMetas();
 
         //Se carga el adapter para listar las metas
         ListView listViewMetas = (ListView) findViewById(R.id.metas_lista_metas);
