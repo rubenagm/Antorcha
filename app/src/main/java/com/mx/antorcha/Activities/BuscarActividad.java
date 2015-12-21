@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 public class BuscarActividad extends AppCompatActivity {
 
+    GoogleMap mapa;
     private DrawerLayout drawerLayout;
     private ListView listView;
 
