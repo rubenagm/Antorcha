@@ -14,13 +14,15 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="65dp">
+        android:layout_height="63dp">
         <ImageView
+            android:layout_gravity="bottom"
             android:id="@+id/inicio_image_registrarse"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent" />
         <ImageView
+            android:layout_gravity="bottom"
             android:id="@+id/inicio_image_iniciar_sesion"
             android:layout_weight="1"
             android:layout_width="0dp"

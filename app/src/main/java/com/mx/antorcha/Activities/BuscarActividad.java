@@ -1,5 +1,6 @@
 package com.mx.antorcha.Activities;
 
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -30,6 +31,8 @@ public class BuscarActividad extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar_actividad);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //se carga la barra de android por el xml
         Toolbar toolbar = (Toolbar) findViewById(R.id.buscar_actividad_toolbar);

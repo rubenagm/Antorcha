@@ -1,6 +1,7 @@
 package com.mx.antorcha.Activities;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.AssetManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,9 @@ public class Inicio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         //Se inicializan los objetos del layout
         imageViewRegistrarse = (ImageView) findViewById(R.id.inicio_image_registrarse);
@@ -30,8 +34,9 @@ public class Inicio extends AppCompatActivity {
         imageViewIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Inicio.this, Principal.class);
+                Intent intent = new Intent(Inicio.this, BuscarActividad.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -39,8 +44,9 @@ public class Inicio extends AppCompatActivity {
         imageViewRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Inicio.this, Registro.class);
+                Intent intent = new Intent(Inicio.this, BuscarActividad.class);
                 startActivity(intent);
+                finish();
             }
         });
 

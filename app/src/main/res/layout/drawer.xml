@@ -12,7 +12,25 @@
     <RelativeLayout
         android:background="@drawable/degradado_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"></RelativeLayout>
+        android:layout_height="50dp">
+        <TextView
+            android:textSize="15sp"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"
+            android:textColor="#FFFFFF"
+            android:text="Nombre del miembro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:alpha=".9"
+            android:src="@drawable/icono_triangulo"
+            android:id="@+id/drawer_mas"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="11dp"
+            android:layout_height="11dp" />
+    </RelativeLayout>
     <LinearLayout
         android:layout_marginLeft="20dp"
         android:orientation="vertical"
@@ -35,7 +53,7 @@
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="28dp"
+                android:layout_marginLeft="30dp"
                 android:layout_gravity="center_vertical"
                 android:textSize="14sp"
                 android:text="Buscar actividad"
@@ -49,6 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp">
             <ImageView
+                android:layout_gravity="center_vertical"
                 android:alpha=".5"
                 android:id="@+id/drawer_icono_actividades"
                 android:layout_width="28dp"
@@ -58,7 +77,7 @@
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="28dp"
+                android:layout_marginLeft="30dp"
                 android:layout_gravity="center_vertical"
                 android:textSize="14sp"
                 android:text="Actividades"
@@ -72,6 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp">
             <ImageView
+                android:layout_gravity="center_vertical"
                 android:alpha=".5"
                 android:id="@+id/drawer_icono_perfil"
                 android:layout_width="28dp"
@@ -81,7 +101,7 @@
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="28dp"
+                android:layout_marginLeft="30dp"
                 android:layout_gravity="center_vertical"
                 android:textSize="14sp"
                 android:text="Perfil"
@@ -95,6 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp">
             <ImageView
+                android:layout_gravity="center_vertical"
                 android:alpha=".5"
                 android:id="@+id/drawer_icono_medallas"
                 android:layout_width="28dp"
@@ -104,7 +125,7 @@
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="28dp"
+                android:layout_marginLeft="30dp"
                 android:layout_gravity="center_vertical"
                 android:textSize="14sp"
                 android:text="Medallas"
@@ -118,6 +139,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp">
             <ImageView
+                android:layout_gravity="center_vertical"
                 android:alpha=".5"
                 android:id="@+id/drawer_icono_metas"
                 android:layout_width="28dp"
@@ -127,7 +149,7 @@
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="28dp"
+                android:layout_marginLeft="30dp"
                 android:layout_gravity="center_vertical"
                 android:textSize="14sp"
                 android:text="Metas"

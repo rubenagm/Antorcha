@@ -3,6 +3,7 @@ package com.mx.antorcha.Activities;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,8 @@ public class SplashScreen extends AppCompatActivity {
 
         setContentView(R.layout.activity_splash_screen);
 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         EsperaSplashScreen esperaSplashScreen = new EsperaSplashScreen(this);
         esperaSplashScreen.execute();
     }
@@ -36,7 +39,7 @@ public class SplashScreen extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

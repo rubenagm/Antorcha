@@ -1,5 +1,6 @@
 package com.mx.antorcha.Activities;
 
+import android.content.pm.ActivityInfo;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,8 @@ public class Medallas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medallas);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //se carga la barra de android por el xml
         Toolbar toolbar = (Toolbar) findViewById(R.id.medallas_toolbar);

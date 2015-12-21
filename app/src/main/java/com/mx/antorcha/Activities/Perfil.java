@@ -1,5 +1,6 @@
 package com.mx.antorcha.Activities;
 
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -29,9 +30,15 @@ public class Perfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         //se carga la barra de android por el xml
         Toolbar toolbar = (Toolbar) findViewById(R.id.perfil_toolbar);
         setSupportActionBar(toolbar);
+
+        //Se carga el boton de agregar deporte a la barra
+        ImageView imageViewAgregar = (ImageView) findViewById(R.id.perfil_barra_agregar_deporte);
+        AdaptadorSVG.mostrarImagen(imageViewAgregar, this, R.raw.icono_agregar);
 
         //se carga el drawer
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
@@ -51,7 +58,7 @@ public class Perfil extends AppCompatActivity {
             }
         });;
 
-        AdaptadorPerfilTabs adaptadorPerfilTabs = new AdaptadorPerfilTabs(getSupportFragmentManager(), this);
+        AdaptadorPerfilTabs adaptadorPerfilTabs = new AdaptadorPerfilTabs(getSupportFragmentManager(), this, imageViewAgregar);
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.perfil_pager);
         viewPager.setAdapter(adaptadorPerfilTabs);

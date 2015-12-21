@@ -1,5 +1,6 @@
 package com.mx.antorcha.Activities;
 
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +16,8 @@ public class NuevaMeta extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nueva_meta);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //se carga la barra de android por el xml
         Toolbar toolbar = (Toolbar) findViewById(R.id.nueva_meta_toolbar);
