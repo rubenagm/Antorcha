@@ -63,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:src="@drawable/medalla_oculta"
                     android:layout_gravity="center_horizontal"
                     android:id="@+id/medallas_medalla_principal"
                     android:layout_marginTop="40dp"

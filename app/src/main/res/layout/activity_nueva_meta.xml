@@ -44,6 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <EditText
+        android:id="@+id/nueva_meta_nombre_meta"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
         android:layout_gravity="center"
@@ -86,8 +87,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <EditText
+                android:id="@+id/nueva_meta_inicio"
                 android:gravity="center"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:hint="Cantidad"
                 android:background="@drawable/edittext_diseno"
                 android:layout_width="match_parent"
@@ -119,15 +121,16 @@
                 android:layout_marginTop="10dp"
                 android:alpha=".87"
                 android:textColor="#000000"
-                android:text="Actual"
+                android:text="Meta"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <EditText
+                android:id="@+id/nueva_meta_fin"
                 android:gravity="center"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:hint="Cantidad"
                 android:background="@drawable/edittext_diseno"
                 android:layout_width="match_parent"
@@ -135,6 +138,7 @@
         </LinearLayout>
     </LinearLayout>
     <Spinner
+        android:id="@+id/nueva_meta_tipo_medida"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:gravity="center"
@@ -155,6 +159,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <EditText
+        android:id="@+id/nueva_meta_fecha_limite"
         android:gravity="center"
         android:background="@drawable/edittext_diseno"
         android:layout_marginRight="60dp"

@@ -11,14 +11,16 @@ public class Meta {
     private String nombre;
     private String fechaFin;
     private String fechaInicio;
+    private String tipoMedida;
 
-    public Meta (int id, double inicio, double fin, String nombre, String fechaFin, String fechaInicio) {
+    public Meta(int id, double inicio, double fin, String nombre, String fechaFin, String fechaInicio, String tipoMedida) {
         this.id = id;
         this.inicio = inicio;
         this.fin = fin;
         this.fechaFin = fechaFin;
         this.fechaInicio = fechaInicio;
         this.nombre = nombre;
+        this.tipoMedida = tipoMedida;
     }
 
     public Meta () {
@@ -71,5 +73,13 @@ public class Meta {
 
     public void setFechaInicio(String fechaInicio) {
         this.fechaInicio = fechaInicio;
+    }
+
+    public String getTipoMedida() {
+        return tipoMedida;
+    }
+
+    public void setTipoMedida(String tipoMedida) {
+        this.tipoMedida = tipoMedida;
     }
 }

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.mx.antorcha.Activities.Actividades;
 import com.mx.antorcha.Activities.BuscarActividad;
 import com.mx.antorcha.Activities.Medallas;
 import com.mx.antorcha.Activities.Metas;
@@ -28,6 +29,7 @@ public class AdapterDrawer extends ArrayAdapter<String> {
     ImageView imageViewPerfil;
     ImageView imageViewMedallas;
     ImageView imageViewMetas;
+    ImageView imageViewMas;
 
     LinearLayout linearLayoutBuscarActividad;
     LinearLayout linearLayoutActividades;
@@ -57,6 +59,8 @@ public class AdapterDrawer extends ArrayAdapter<String> {
         imageViewPerfil = (ImageView) convertView.findViewById(R.id.drawer_icono_perfil);
         imageViewMedallas = (ImageView) convertView.findViewById(R.id.drawer_icono_medallas);
         imageViewMetas = (ImageView) convertView.findViewById(R.id.drawer_icono_metas);
+        imageViewMas = (ImageView) convertView.findViewById(R.id.drawer_mas);
+
 
         //se muestran los iconos
         AdaptadorSVG.mostrarImagen(imageViewBuscarActividad, activity, R.raw.icono_buscar_actividad);
@@ -64,6 +68,7 @@ public class AdapterDrawer extends ArrayAdapter<String> {
         AdaptadorSVG.mostrarImagen(imageViewPerfil, activity, R.raw.icono_perfil);
         AdaptadorSVG.mostrarImagen(imageViewMedallas, activity, R.raw.icono_medallas);
         AdaptadorSVG.mostrarImagen(imageViewMetas, activity, R.raw.icono_metas);
+
 
         //se inicializan los linear layout
         linearLayoutBuscarActividad = (LinearLayout) convertView.findViewById(R.id.drawer_layout_buscar_actividad);
@@ -78,6 +83,7 @@ public class AdapterDrawer extends ArrayAdapter<String> {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, Perfil.class);
                 activity.startActivity(intent);
+                activity.finish();
             }
         });
 
@@ -86,6 +92,7 @@ public class AdapterDrawer extends ArrayAdapter<String> {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, Medallas.class);
                 activity.startActivity(intent);
+                activity.finish();
             }
         });
 
@@ -94,6 +101,7 @@ public class AdapterDrawer extends ArrayAdapter<String> {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, BuscarActividad.class);
                 activity.startActivity(intent);
+                activity.finish();
 
             }
         });
@@ -103,6 +111,16 @@ public class AdapterDrawer extends ArrayAdapter<String> {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, Metas.class);
                 activity.startActivity(intent);
+                activity.finish();
+            }
+        });
+
+        linearLayoutActividades.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, Actividades.class);
+                activity.startActivity(intent);
+                activity.finish();
             }
         });
 

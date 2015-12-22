@@ -1,5 +1,6 @@
 package com.mx.antorcha.Activities;
 
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -32,6 +33,8 @@ public class BuscarActividad extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar_actividad);
 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         //se carga la barra de android por el xml
         Toolbar toolbar = (Toolbar) findViewById(R.id.buscar_actividad_toolbar);
         setSupportActionBar(toolbar);
@@ -56,7 +59,7 @@ public class BuscarActividad extends AppCompatActivity {
 
         //se crea el adaptador para las tabs de la activity
         AdaptadorBuscarActividadTabs adaptadorBuscarActividadTabs = new AdaptadorBuscarActividadTabs(
-                getSupportFragmentManager());
+                getSupportFragmentManager(), this);
 
         //las páginas de las tabs
         ViewPager viewPager = (ViewPager) findViewById(R.id.buscar_actividad_pager);

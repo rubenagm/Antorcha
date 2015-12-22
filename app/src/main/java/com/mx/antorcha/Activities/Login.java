@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.AccessToken;
@@ -23,6 +24,7 @@ import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.mx.antorcha.AdaptadorSVG.AdaptadorSVG;
 import com.mx.antorcha.R;
 
 import com.facebook.FacebookSdk;
@@ -56,9 +58,18 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //se cargan las imagene sen SVG
+        ImageView imageViewBotonInicio = (ImageView) findViewById(R.id.login_boton_inicio_sesion);
+        ImageView imageViewO = (ImageView) findViewById(R.id.login_imagen_o);
+
+        AdaptadorSVG.mostrarImagen(imageViewO, this, R.raw.icono_o);
+        AdaptadorSVG.mostrarImagen(imageViewBotonInicio, this, R.raw.iniciar_sesion);
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         mCallbackManager = CallbackManager.Factory.create();
 
+        //Login de facebook
         LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {

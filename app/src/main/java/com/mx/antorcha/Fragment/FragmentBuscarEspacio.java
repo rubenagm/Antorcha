@@ -1,53 +1,41 @@
 package com.mx.antorcha.Fragment;
 
-import android.content.Intent;
-import android.location.Location;
-
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.mx.antorcha.AdaptadorSVG.AdaptadorSVG;
 import com.mx.antorcha.R;
 
 /**
  * Created by Ruben on 15/12/2015.
  */
-public class FragmentBuscarEspacio extends Fragment  implements GoogleMap.OnMapClickListener
-{
-    GoogleMap mapa;
+public class FragmentBuscarEspacio extends Fragment {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-       setUpMap();
-    }
+    private Activity activity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_buscar_espacio, container, false);
+
+        //Se cargan las imagenes de los icono de contacto
+        ImageView imageViewCompartir = (ImageView) rootView.findViewById(R.id.sliding_buscar_actividades_espacio_compartir);
+        ImageView imageViewContacto = (ImageView) rootView.findViewById(R.id.sliding_buscar_actividades_espacio_contacto);
+        ImageView imageViewLapiz = (ImageView) rootView.findViewById(R.id.sliding_buscar_actividades_espacio_lapiz);
+
+        AdaptadorSVG.mostrarImagen(imageViewCompartir, activity, R.raw.icono_compartir);
+        AdaptadorSVG.mostrarImagen(imageViewContacto, activity, R.raw.icono_llamada);
+        AdaptadorSVG.mostrarImagen(imageViewLapiz, activity, R.raw.icono_lapiz);
         return rootView;
     }
 
-    @Override
-    public void onMapClick(LatLng puntoPulsado) {
-        mapa.addMarker(new MarkerOptions().position(puntoPulsado).
-                icon(BitmapDescriptorFactory
-                        .defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-    }
 
-    private void setUpMap()
-    {
-        mapa.setMyLocationEnabled(true);
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 }

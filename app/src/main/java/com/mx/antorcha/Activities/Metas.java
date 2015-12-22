@@ -2,6 +2,7 @@ package com.mx.antorcha.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.ListView;
 
 import com.mx.antorcha.AdaptadorSVG.AdaptadorSVG;
 import com.mx.antorcha.Adaptadores.AdaptadorListaMetas;
+import com.mx.antorcha.BaseDatos.ConexionBaseDatosObtener;
 import com.mx.antorcha.MenuDrawer.AdapterDrawer;
 import com.mx.antorcha.Modelos.Meta;
 import com.mx.antorcha.R;
@@ -30,6 +32,8 @@ public class Metas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_metas);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //se carga la barra de android por el xml
         Toolbar toolbar = (Toolbar) findViewById(R.id.metas_toolbar);
@@ -66,13 +70,16 @@ public class Metas extends AppCompatActivity {
             }
         });
 
-        /**************/
+        /**************
         //VARIABLES PARA PRUEBAS
         ArrayList<Meta> metas = new ArrayList<>();
         metas.add(new Meta());
         metas.add(new Meta());
         metas.add(new Meta());
         /**************/
+
+        ConexionBaseDatosObtener conexionBaseDatosObtener = new ConexionBaseDatosObtener(this);
+        ArrayList<Meta> metas = conexionBaseDatosObtener.obtenerMetas();
 
         //Se carga el adapter para listar las metas
         ListView listViewMetas = (ListView) findViewById(R.id.metas_lista_metas);

@@ -3,7 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        xmlns:sothree="http://schemas.android.com/apk/res-auto"
         android:id="@+id/buscar_espacio_sliding_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,6 +38,8 @@
             android:focusable="false"
             android:orientation="vertical">
 
+            <!-- SE AGREGA LA PARTE VISUAL DEL SLIDING-->
+            <include layout="@layout/sliding_buscar_actividades_espacio"/>
         </LinearLayout>
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 </RelativeLayout>

@@ -65,6 +65,10 @@ public class FragmentPerfilPerfil extends Fragment {
         AdaptadorSVG.mostrarImagen(imageViewFlechaDerecha, activity, R.raw.icono_flecha_derecha);
         AdaptadorSVG.mostrarImagen(imageViewFlechaIzquierda, activity, R.raw.icono_flecha_izquierda);
 
+        //Se carga la imagen para el degradado de la foto, el fondo oscuro
+        ImageView imageViewDifuminado = (ImageView) rootView.findViewById(R.id.perfil_imagen_degradado);
+        AdaptadorSVG.mostrarImagen(imageViewDifuminado, activity, R.raw.degradado_inferior);
+
         return rootView;
     }
 
