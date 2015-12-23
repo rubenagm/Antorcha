@@ -4,9 +4,11 @@
     android:layout_height="140dp"
     card_view:cardCornerRadius="3dp"
     card_view:cardElevation="3dp"
+    android:background="#FFFFFF"
     card_view:cardUseCompatPadding="true">
 
     <RelativeLayout
+        android:background="#FFFFFF"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -64,7 +66,7 @@
                 </LinearLayout>
                 <LinearLayout
                     android:layout_marginRight="15dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="15dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
                     android:orientation="horizontal"
@@ -72,7 +74,7 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:textStyle="bold"
-                        android:textSize="14sp"
+                        android:textSize="13sp"
                         android:textColor="#2f6cff"
                         android:text="CALIFICAR"
                         android:layout_width="wrap_content"
@@ -80,7 +82,7 @@
                     <TextView
                         android:textStyle="bold"
                         android:layout_marginLeft="20dp"
-                        android:textSize="14sp"
+                        android:textSize="13sp"
                         android:textColor="#2f6cff"
                         android:text="INVITAR"
                         android:layout_width="wrap_content"

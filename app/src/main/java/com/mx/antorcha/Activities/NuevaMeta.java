@@ -1,6 +1,7 @@
 package com.mx.antorcha.Activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,6 +45,8 @@ public class NuevaMeta extends AppCompatActivity {
         imageViewRegresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(NuevaMeta.this, Metas.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -64,6 +67,10 @@ public class NuevaMeta extends AppCompatActivity {
 
                 ConexionBaseDatosInsertar conexionBaseDatosInsertar = new ConexionBaseDatosInsertar(activity);
                 conexionBaseDatosInsertar.insertarMeta(meta);
+
+                Intent intent = new Intent(NuevaMeta.this, Metas.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

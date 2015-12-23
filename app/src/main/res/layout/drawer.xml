@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
+        android:scaleType="centerCrop"
         android:src="@drawable/com_facebook_profile_picture_blank_portrait"
         android:id="@+id/drawer_imagen_perfil"
         android:layout_width="match_parent"
-        android:layout_height="140dp" />
+        android:layout_height="170dp" />
     <RelativeLayout
         android:background="@drawable/degradado_toolbar"
         android:layout_width="match_parent"

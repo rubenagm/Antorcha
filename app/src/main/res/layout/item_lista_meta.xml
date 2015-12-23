@@ -10,14 +10,11 @@
         android:layout_alignParentRight="true"
         android:layout_width="30dp"
         android:layout_height="30dp" />
-    <ImageView
-        android:alpha=".5"
-        android:id="@+id/item_metas_compartir"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_width="30dp"
-        android:layout_height="30dp" />
+
     <LinearLayout
+
+        android:background="#FFFFFF"
+        android:id="@+id/item_meta_clic_item"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -125,4 +122,16 @@
         android:layout_width="match_parent"
         android:layout_height="1dp" />
     </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/item_metas_clic_compartir"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp">
+        <ImageView
+            android:alpha=".5"
+            android:id="@+id/item_metas_compartir"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+    </RelativeLayout>
 </RelativeLayout>
