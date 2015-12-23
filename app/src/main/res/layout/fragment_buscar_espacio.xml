@@ -20,13 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <fragment
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:name="com.google.android.gms.maps.MapFragment"
-                android:id="@+id/map_fragment_espacio" />
 
             <!-- AQUÍ DENTRO VA TODO LO QUE SE VEA DENTRO DEL ACTIVITY-->
+            <com.google.android.gms.maps.MapView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:id="@+id/map_fragment_espacio"/>
         </RelativeLayout>
 
         <!-- SLIDING LAYOUT AQUÍ NO VA NADA DEL MAPA-->
@@ -43,4 +42,5 @@
             <include layout="@layout/sliding_buscar_actividades_espacio"/>
         </LinearLayout>
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
 </RelativeLayout>

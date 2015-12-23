@@ -23,6 +23,9 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -30,21 +33,25 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.mx.antorcha.AdaptadorSVG.AdaptadorSVG;
 import com.mx.antorcha.R;
 
+import javax.security.auth.callback.Callback;
+
 /**
  * Created by Ruben on 15/12/2015.
  */
-public class FragmentBuscarEspacio extends Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class FragmentBuscarEspacio extends Fragment {
 
     private Activity activity;
     private static final int ERROR_DIALOG_REQUEST = 1 ;
     GoogleMap mMap;
     GoogleApiClient mGoogleApiClient;
+    MapView mapView;
     Location location;
+    OnMapReadyCallback callback;
 
     @Override
     public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        buildGoogleApiClient();
+
     }
 
 
@@ -57,10 +64,21 @@ public class FragmentBuscarEspacio extends Fragment implements GoogleApiClient.C
         ImageView imageViewContacto = (ImageView) rootView.findViewById(R.id.sliding_buscar_actividades_espacio_contacto);
         ImageView imageViewLapiz = (ImageView) rootView.findViewById(R.id.sliding_buscar_actividades_espacio_lapiz);
 
+        mapView = (MapView) rootView.findViewById(R.id.map_fragment_espacio);
+        mapView.onCreate(savedInstanceState);
+        MapsInitializer.initialize(getContext());
+
+       mMap = mapView.getMap();
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mMap.setMyLocationEnabled(true);
+
+        addMarkers();
+
         AdaptadorSVG.mostrarImagen(imageViewCompartir, activity, R.raw.icono_compartir);
         AdaptadorSVG.mostrarImagen(imageViewContacto, activity, R.raw.icono_llamada);
         AdaptadorSVG.mostrarImagen(imageViewLapiz, activity, R.raw.icono_lapiz);
         return rootView;
+
 
 
     }
@@ -68,91 +86,32 @@ public class FragmentBuscarEspacio extends Fragment implements GoogleApiClient.C
         this.activity = activity;
     }
 
-    public synchronized void buildGoogleApiClient(){
-    mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
-            .addConnectionCallbacks(this)
-            .addOnConnectionFailedListener(this)
-            .addApi(LocationServices.API)
-            .build();
-        }
-
-    private void getLocation(double lat, double lng, float zoom){
-        LatLng latLng = new LatLng(lat, lng);
-        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(latLng,zoom);
-        mMap.moveCamera(update);
-    }
-
-    private boolean checkServices() {
-        int EsDisponible= GooglePlayServicesUtil.isGooglePlayServicesAvailable(getActivity());
-        //Si la coneccion esta Disponible
-        if (EsDisponible== ConnectionResult.SUCCESS){
-            return true;
-        }else if (GooglePlayServicesUtil.isUserRecoverableError(EsDisponible)){
-            Dialog dialog=GooglePlayServicesUtil.getErrorDialog(EsDisponible,getActivity(),ERROR_DIALOG_REQUEST);
-            dialog.show();
-        }else {
-            //Toast.makeText(FragmentBuscarEspacio.this, "Cannot connnect to mapping Service", Toast.LENGTH_SHORT).show();
-        }
-        return false;
-    }
-//Inicializa el Mapa
-    private boolean initMap() {
-        if (mMap == null) {
-            SupportMapFragment mapFragment= (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment_espacio);
-            mMap=mapFragment.getMap();
-        }
-        return (mMap!=null);
-    }
-
     @Override
-    public void onConnected(Bundle bundle) {
-        location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        if (location != null) {
-            //Latitud
-            double latitudeValue=location.getLatitude();
-            //Longitud
-            double longitudeValue=location.getLongitude();
-            if(checkServices()){
-                if(initMap()){
-                    //Actualiza el mapa con la ubicacion actual
-                    getLocation(latitudeValue, longitudeValue, 15);
-                    //Tipo de mapa
-                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                    mMap.setMyLocationEnabled(true);
-
-                    //Configuracion de los Markers
-                    MarkerOptions marker= new MarkerOptions()
-                            .title("Dharmapuri")
-                            .position(new LatLng(latitudeValue,longitudeValue))
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-                    mMap.addMarker(marker);
-                }
-            }
-        }
-
+    public void onResume(){
+        super.onResume();
+        mapView.onResume();
     }
-
     @Override
-    public void onConnectionSuspended(int i) {
-        Log.d("GettingLocation", "onConnectionFailed");
+    public void onDestroy(){
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+    @Override
+    public void onPause(){
+        super.onPause();
+        mapView.onPause();
     }
 
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-        Log.d("GettingLocation", "onConnectionFailed");
+    public void addMarkers()
+    {
+        double latitudeValue=location.getLatitude();
+        //getting the longitude value
+        double longitudeValue=location.getLongitude();
+        MarkerOptions markerOptions = new MarkerOptions()
+                .title("Marker")
+                .position(new LatLng(latitudeValue, longitudeValue)).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+        mMap.addMarker(markerOptions);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        mGoogleApiClient.connect();
-    }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (mGoogleApiClient.isConnected()) {
-            mGoogleApiClient.disconnect();
-        }
-    }
 }
