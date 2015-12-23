@@ -2,6 +2,7 @@ package com.mx.antorcha.MenuDrawer;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.mx.antorcha.Activities.Medallas;
 import com.mx.antorcha.Activities.Metas;
 import com.mx.antorcha.Activities.Perfil;
 import com.mx.antorcha.AdaptadorSVG.AdaptadorSVG;
+import com.mx.antorcha.Fragment.FragmentPerfilPerfil;
 import com.mx.antorcha.R;
 
 import java.util.ArrayList;
@@ -123,6 +125,18 @@ public class AdapterDrawer extends ArrayAdapter<String> {
                 activity.finish();
             }
         });
+
+        //se obtiene la imagen guardada en el celular
+        Bitmap bitmapImagenPerfil = FragmentPerfilPerfil.obtenerImagen();
+
+        //se carga la imagen de perfil
+        ImageView imageViewImagenPerfil = (ImageView)  convertView.findViewById(R.id.drawer_imagen_perfil);
+
+
+
+        if (bitmapImagenPerfil != null) {
+            imageViewImagenPerfil.setImageBitmap(bitmapImagenPerfil);
+        }
 
         return convertView;
     }

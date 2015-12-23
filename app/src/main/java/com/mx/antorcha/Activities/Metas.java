@@ -3,6 +3,7 @@ package com.mx.antorcha.Activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -67,6 +68,7 @@ public class Metas extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Metas.this, NuevaMeta.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -83,7 +85,8 @@ public class Metas extends AppCompatActivity {
 
         //Se carga el adapter para listar las metas
         ListView listViewMetas = (ListView) findViewById(R.id.metas_lista_metas);
-        AdaptadorListaMetas adaptadorListaMetas = new AdaptadorListaMetas(this, metas);
+        AdaptadorListaMetas adaptadorListaMetas = new AdaptadorListaMetas(this, metas, getSupportFragmentManager());
+        adaptadorListaMetas.setListView(listViewMetas);
 
         listViewMetas.setAdapter(adaptadorListaMetas);
     }

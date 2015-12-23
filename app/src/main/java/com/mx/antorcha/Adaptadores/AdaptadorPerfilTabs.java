@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.mx.antorcha.Activities.Perfil;
 import com.mx.antorcha.Fragment.FragmentPerfilDeportes;
 import com.mx.antorcha.Fragment.FragmentPerfilPerfil;
 
@@ -19,6 +20,8 @@ public class AdaptadorPerfilTabs extends FragmentStatePagerAdapter {
 
     private Activity activity;
     private ImageView imageViewAgregar;
+    private FragmentManager fragmentManager;
+    private Perfil perfil;
 
     public AdaptadorPerfilTabs(FragmentManager fm, Activity activity, ImageView imageViewAgregar) {
         super(fm);
@@ -36,6 +39,8 @@ public class AdaptadorPerfilTabs extends FragmentStatePagerAdapter {
                 imageViewAgregar.setVisibility(View.GONE);
                 FragmentPerfilPerfil fragmentPerfilPerfil = new FragmentPerfilPerfil();
                 fragmentPerfilPerfil.setActivity(activity);
+                fragmentPerfilPerfil.setPerfil(perfil);
+                fragmentPerfilPerfil.setFragmentManager(fragmentManager);
                 return fragmentPerfilPerfil;
             case 1 :
                 imageViewAgregar.setVisibility(View.VISIBLE);
@@ -64,5 +69,14 @@ public class AdaptadorPerfilTabs extends FragmentStatePagerAdapter {
             default:
                 return "Tab";
         }
+    }
+
+    public void setFragmentManager(FragmentManager fragmentManager) {
+        this.fragmentManager = fragmentManager;
+    }
+
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 }

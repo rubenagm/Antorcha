@@ -8,12 +8,13 @@
         android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="230dp">
             <ImageView
+                android:scaleType="centerCrop"
                 android:id="@+id/perfil_imagen_miembro"
                 android:src="@drawable/com_facebook_profile_picture_blank_portrait"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="230dp" />
             <ImageView
                 android:layout_alignParentBottom="true"
                 android:id="@+id/perfil_imagen_degradado"

@@ -7,11 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.mx.antorcha.Modelos.Meta;
+import com.mx.antorcha.Modelos.MetaProgreso;
 
 import java.util.ArrayList;
 
 /**
- * Created by Ruben on 20/12/2015.
+ *
  */
 public class ConexionBaseDatosObtener extends SQLiteOpenHelper {
 
@@ -22,6 +23,7 @@ public class ConexionBaseDatosObtener extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(Querys.CREAR_TABLA_METAS);
+        db.execSQL(Querys.CREAR_TABLA_META_PROGRESO);
     }
 
     @Override
@@ -46,13 +48,35 @@ public class ConexionBaseDatosObtener extends SQLiteOpenHelper {
                     cursor.getString(cursor.getColumnIndex("FechaFin")),
                     cursor.getString(cursor.getColumnIndex("FechaInicio")),
                     cursor.getString(cursor.getColumnIndex("TipoMedida"))
-                    ));
+            ));
 
             cursor.moveToNext();
         }
         cursor.close();
 
         return metas;
+    }
+
+    public ArrayList<MetaProgreso> obtenerMetaProgreso (int idMeta) {
+        ArrayList<MetaProgreso> metaProgresos = new ArrayList<>();
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(Querys.OBTENER_METAS_PROGRESO + idMeta, null);
+        cursor.moveToFirst();
+
+        while (!cursor.isAfterLast()) {
+
+            metaProgresos.add(new MetaProgreso(
+                    cursor.getInt(cursor.getColumnIndex("IdMeta")),
+                    cursor.getDouble(cursor.getColumnIndex("Progreso")),
+                    cursor.getString(cursor.getColumnIndex("Fecha"))
+            ));
+
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return metaProgresos;
     }
 
 }
