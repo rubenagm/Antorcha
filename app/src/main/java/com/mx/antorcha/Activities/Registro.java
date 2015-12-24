@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -22,6 +25,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
+import com.mx.antorcha.AdaptadorSVG.AdaptadorSVG;
 import com.mx.antorcha.R;
 
 public class Registro extends AppCompatActivity implements View.OnClickListener,
@@ -41,17 +45,42 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //se carga la barra de android por el xml
+        Toolbar toolbar = (Toolbar) findViewById(R.id.registro_toolbar);
+        setSupportActionBar(toolbar);
+
+        //se cargan las imagenes de la barra
+        ImageView imageViewAtras = (ImageView) findViewById(R.id.registro_toolbar_atras);
+        ImageView imageViewO = (ImageView) findViewById(R.id.registro_imagen_o);
+        ImageView imageViewRegistrarse = (ImageView) findViewById(R.id.registro_boton_registrarse);
+
+        AdaptadorSVG.mostrarImagen(imageViewAtras, this, R.raw.icono_regresar);
+        AdaptadorSVG.mostrarImagen(imageViewO, this, R.raw.icono_o);
+
+        /*** TEMPORAL ***/
+        AdaptadorSVG.mostrarImagen(imageViewRegistrarse, this, R.raw.boton_guardar_meta);
+
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         mCallbackManager = CallbackManager.Factory.create();
 
         LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {}
-            @Override
-            public void onCancel() {}
 
             @Override
-            public void onError(FacebookException error) {}
+            public void onSuccess(LoginResult loginResult) {
+                Log.i("Facebook", loginResult.toString());
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
         });
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(this);
