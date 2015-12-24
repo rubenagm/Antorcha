@@ -34,7 +34,7 @@
     <TextView
         android:textSize="15sp"
         android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:alpha=".87"
         android:textColor="#000000"
         android:text="¡Proponte lo que quieres lograr!"
@@ -44,20 +44,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <EditText
+        android:textSize="15sp"
+        android:gravity="center"
         android:id="@+id/nueva_meta_nombre_meta"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
         android:layout_gravity="center"
         android:background="@drawable/edittext_diseno"
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="37dp" />
     <TextView
         android:textSize="15sp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="15dp"
         android:alpha=".87"
         android:textColor="#000000"
-        android:text="Define lo que quieres lograr"
+        android:text="Define tu meta"
         android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:layout_gravity="center"
@@ -87,28 +89,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <EditText
+                android:layout_marginLeft="15dp"
+                android:textSize="15sp"
                 android:id="@+id/nueva_meta_inicio"
                 android:gravity="center"
                 android:inputType="numberDecimal"
                 android:hint="Cantidad"
                 android:background="@drawable/edittext_diseno"
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
+                android:layout_height="37dp" />
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
-            android:layout_weight="1"
+            android:layout_weight=".7"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
             <TextView
                 android:layout_width="1dp"
-                android:layout_height="42dp" />
+                android:layout_height="57dp" />
             <TextView
+                android:alpha=".37"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/degradado_toolbar"
-                android:layout_width="5dp"
-                android:layout_height="30dp" />
+                android:background="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -128,16 +133,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <EditText
+                android:layout_marginRight="15dp"
+                android:textSize="15sp"
                 android:id="@+id/nueva_meta_fin"
                 android:gravity="center"
                 android:inputType="numberDecimal"
                 android:hint="Cantidad"
                 android:background="@drawable/edittext_diseno"
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
+                android:layout_height="37dp" />
         </LinearLayout>
     </LinearLayout>
     <Spinner
+        android:drawSelectorOnTop="true"
         android:id="@+id/nueva_meta_tipo_medida"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
@@ -148,8 +156,8 @@
     </Spinner>
     <TextView
         android:textSize="15sp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="35dp"
         android:alpha=".87"
         android:textColor="#000000"
         android:text="¿Cual es tu fecha límite?"
@@ -158,16 +166,17 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/nueva_meta_fecha_limite"
-        android:gravity="center"
-        android:background="@drawable/edittext_diseno"
+    <TextView
+        android:id="@+id/nueva_meta_fecha"
         android:layout_marginRight="60dp"
         android:layout_marginLeft="60dp"
+        android:gravity="center"
+        android:background="@drawable/edittext_diseno"
+        android:text="Selecciona la fecha"
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="37dp" />
     <ImageView
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="35dp"
         android:id="@+id/nueva_meta_image_guardar"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"

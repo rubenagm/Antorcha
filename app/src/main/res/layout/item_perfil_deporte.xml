@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
    android:layout_width="match_parent"
-    android:layout_height="170dp">
+    android:layout_height="130dp">
     <ImageView
         android:id="@+id/deportes_lista_mas_opciones"
         android:layout_width="25dp"
@@ -10,7 +10,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/nadar"
         android:layout_width="match_parent"
-        android:layout_height="170dp" />
+        android:layout_height="match_parent" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_centerHorizontal="true"

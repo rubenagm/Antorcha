@@ -50,6 +50,7 @@
                 android:layout_width="28dp"
                 android:layout_height="28dp" />
             <TextView
+                android:id="@+id/drawer_texto_buscar_actividad"
                 android:alpha=".7"
                 android:textColor="#000000"
                 android:textStyle="bold"
@@ -74,6 +75,7 @@
                 android:layout_width="28dp"
                 android:layout_height="28dp" />
             <TextView
+                android:id="@+id/drawer_texto_actividades"
                 android:alpha=".7"
                 android:textColor="#000000"
                 android:textStyle="bold"
@@ -98,6 +100,7 @@
                 android:layout_width="28dp"
                 android:layout_height="28dp" />
             <TextView
+                android:id="@+id/drawer_texto_perfil"
                 android:alpha=".7"
                 android:textColor="#000000"
                 android:textStyle="bold"
@@ -122,6 +125,7 @@
                 android:layout_width="28dp"
                 android:layout_height="28dp" />
             <TextView
+                android:id="@+id/drawer_texto_medallas"
                 android:alpha=".7"
                 android:textColor="#000000"
                 android:textStyle="bold"
@@ -146,6 +150,7 @@
                 android:layout_width="28dp"
                 android:layout_height="28dp" />
             <TextView
+                android:id="@+id/drawer_texto_metas"
                 android:alpha=".7"
                 android:textColor="#000000"
                 android:textStyle="bold"

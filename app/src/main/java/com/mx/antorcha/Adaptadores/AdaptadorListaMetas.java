@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.mx.antorcha.Activities.Perfil;
 import com.mx.antorcha.AdaptadorSVG.AdaptadorSVG;
 import com.mx.antorcha.BaseDatos.ConexionBaseDatosObtener;
+import com.mx.antorcha.Compartir.Compartir;
 import com.mx.antorcha.Dialogos.DialogoMeta;
 import com.mx.antorcha.Modelos.Meta;
 import com.mx.antorcha.Modelos.MetaProgreso;
@@ -81,8 +82,6 @@ public class AdaptadorListaMetas extends ArrayAdapter<Meta> {
         TextView textViewFin = (TextView) convertView.findViewById(R.id.item_meta_fin);
         textViewFin.setText(meta.getFin() + "KG");
 
-
-
         //Onclick de compartir
         RelativeLayout relativeLayoutClicCompartir = (RelativeLayout) convertView.findViewById(R.id.item_metas_clic_compartir);
 
@@ -90,31 +89,10 @@ public class AdaptadorListaMetas extends ArrayAdapter<Meta> {
             @Override
             public void onClick(View v) {
 
-                Bitmap bitmapCompartir = viewABitmap(linearLayoutClic);
-                //se guarda la imagen
-                String root = Environment.getExternalStorageDirectory().toString();
-                File myDir = new File(root + "/antorcha");
-                myDir.mkdirs();
-                String fname = "compartir.jpg";
-                File file = new File (myDir, fname);
-
-                if (file.exists ()) {
-                    file.delete ();
-                }
-                try {
-                    FileOutputStream out = new FileOutputStream(file);
-                    bitmapCompartir.compress(Bitmap.CompressFormat.JPEG, 90, out);
-                    out.flush();
-                    out.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                Uri imageUri = Uri.parse(Environment.getExternalStorageDirectory().toString() + "/antorcha/compartir.jpg");
-                Intent sendIntent = new Intent(Intent.ACTION_SEND);
-                sendIntent.setType("image/*");
-                sendIntent.putExtra(Intent.EXTRA_STREAM, imageUri);// this is for image . here filename_toshare is your file path.
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "antorcha.com.mx");// this is for text
-                activity.startActivity(Intent.createChooser(sendIntent, "Email:"));
+                Compartir compartir = new Compartir(activity);
+                compartir.agregarTexto("Nueva meta!");
+                compartir.agregarView(linearLayoutClic);
+                compartir.compartir();
             }
         });
 
@@ -136,7 +114,6 @@ public class AdaptadorListaMetas extends ArrayAdapter<Meta> {
         textViewPorcentaje.setText(porcentaje + "%");
 
         progressBar.setProgress(porcentaje);
-
 
         //Onlclick del item de la lista
         linearLayoutClic = (LinearLayout) convertView.findViewById(R.id.item_meta_clic_item);
@@ -189,27 +166,8 @@ public class AdaptadorListaMetas extends ArrayAdapter<Meta> {
         return (int) porcentaje;
     }
 
-    public static Bitmap viewABitmap(View v) {
-
-        v.setDrawingCacheEnabled(true);
-        v.buildDrawingCache();
-        Bitmap bm = v.getDrawingCache();
-        return bm;
-    }
-
     public void setListView(ListView listView) {
         this.listView = listView;
     }
 
-    public static Bitmap scaleDownBitmap(Bitmap photo, int newHeight, Context context) {
-
-        final float densityMultiplier = context.getResources().getDisplayMetrics().density;
-
-        int h= (int) (newHeight*densityMultiplier);
-        int w= (int) (h * photo.getWidth()/((double) photo.getHeight()));
-
-        photo=Bitmap.createScaledBitmap(photo, w, h, true);
-
-        return photo;
-    }
 }

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Principal extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +25,7 @@ public class Principal extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.lista_drawer);
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("");
-        listView.setAdapter(new AdapterDrawer(this, R.layout.drawer, arrayList));
+        listView.setAdapter(new AdapterDrawer(this, R.layout.drawer, arrayList, ""));
 
         //se carga la barra de android por el xml
         Toolbar toolbar = (Toolbar) findViewById(R.id.principal_toolbar);
