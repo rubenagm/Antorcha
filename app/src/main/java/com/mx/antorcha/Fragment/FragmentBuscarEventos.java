@@ -68,7 +68,6 @@ public class FragmentBuscarEventos extends Fragment  implements GoogleMap.OnMapL
         MapsInitializer.initialize(getContext());
         mMap = mapView.getMap();
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(20f));
 
         //Ubicacion en el mapa
         mMap.setMyLocationEnabled(true);
@@ -122,7 +121,7 @@ public class FragmentBuscarEventos extends Fragment  implements GoogleMap.OnMapL
         geocoder = new Geocoder(getContext(), Locale.getDefault());
         try{
             addresses = geocoder.getFromLocation(posicion.latitude, posicion.longitude,1);
-            ciudad = addresses.get(0).getAddressLine(2);
+            ciudad = addresses.get(0).getAddressLine(3);
         }
         catch (IOException e){
             e.printStackTrace();
