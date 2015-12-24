@@ -61,7 +61,7 @@ public class Perfil extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.lista_drawer);
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("");
-        listView.setAdapter(new AdapterDrawer(this, R.layout.drawer, arrayList));
+        listView.setAdapter(new AdapterDrawer(this, R.layout.drawer, arrayList, "Perfil"));
 
         //Se muestra el boton del drawer
         ImageView imageViewDrawer = (ImageView) findViewById(R.id.perfil_barra_drawer);

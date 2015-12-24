@@ -24,7 +24,6 @@ import java.util.ArrayList;
 
 public class BuscarActividad extends AppCompatActivity {
 
-    GoogleMap mapa;
     private DrawerLayout drawerLayout;
     private ListView listView;
 
@@ -44,7 +43,7 @@ public class BuscarActividad extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.lista_drawer);
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("");
-        listView.setAdapter(new AdapterDrawer(this, R.layout.drawer, arrayList));
+        listView.setAdapter(new AdapterDrawer(this, R.layout.drawer, arrayList, "BuscarActividad"));
 
         //Se muestra el boton del drawer
         ImageView imageViewDrawer = (ImageView) findViewById(R.id.buscar_actividad_barra_drawer);

@@ -1,6 +1,7 @@
 package com.mx.antorcha.Fragment;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -36,12 +37,8 @@ import java.util.Locale;
 public class FragmentBuscarEventos extends Fragment  implements GoogleMap.OnMapLongClickListener, GoogleMap.OnMarkerClickListener, GoogleMap.OnMarkerDragListener{
 
     private Activity activity;
-    private static final int ERROR_DIALOG_REQUEST = 1 ;
     GoogleMap mMap;
-    GoogleApiClient mGoogleApiClient;
     MapView mapView;
-    Location location;
-    OnMapReadyCallback callback;
     static final LatLng Cucei = new LatLng(20.657588, -103.325770);
 
     @Override
@@ -131,6 +128,7 @@ public class FragmentBuscarEventos extends Fragment  implements GoogleMap.OnMapL
     }
 
     public void addMarker(){
+        Bitmap bitmap = null;
         mMap.addMarker(new MarkerOptions()
                 .position(Cucei)
                 .title("Marcador")
