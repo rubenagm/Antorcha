@@ -32,7 +32,7 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyBJIN5zaDRGd-737ys5x3wOtscP9C17KqE" />
+            android:value="AIzaSyDLqBHiuC-OTYEVl4NT2teoy1QjVd4uFnA" />
 
         <activity
             android:name=".Activities.SplashScreen"
