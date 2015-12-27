@@ -49,48 +49,68 @@ import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
+import java.util.Arrays;
+
 import static com.facebook.AccessToken.*;
 
 public class Login extends AppCompatActivity implements View.OnClickListener,
         GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener
 {
 
+    private static final String TAG = "";
     CallbackManager mCallbackManager;
     private static final int RC_SIGN_IN = 0;
     private GoogleApiClient mGoogleApiClient;
     private boolean mIntentInProgress;
     private boolean mShouldResolve;
-
     private ConnectionResult connectionResult;
 
     private SignInButton signInButton;
+
+    private TextView tvNombre;
+    private TextView tvEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        signInButton = (SignInButton) findViewById(R.id.sign_in_button);
+        tvNombre = (TextView) findViewById(R.id.Nombre);
+        //tvEmail = (TextView) findViewById(R.id.email);
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         mCallbackManager = CallbackManager.Factory.create();
 
         LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
-            public void onSuccess(LoginResult loginResult) {}
+            public void onSuccess(LoginResult loginResult) {
+                tvNombre.setText("Id de usuario: "+loginResult.getAccessToken().getUserId());
+
+            }
             @Override
-            public void onCancel() {}
+            public void onCancel() {
+                tvNombre.setText("Login attempt canceled.");
+            }
 
             @Override
-            public void onError(FacebookException error) {}
+            public void onError(FacebookException error) {
+                tvNombre.setText("Login attempt failed.");
+            }
         });
-        signInButton = (SignInButton) findViewById(R.id.sign_in_button);
-        signInButton.setOnClickListener(this);
+
 
         //build GoogleApiClient
+        signInButton.setOnClickListener(this);
+
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
-                .addApi(Plus.API)
+                .addApi(Plus.API, Plus.PlusOptions.builder().build())
                 .addScope(Plus.SCOPE_PLUS_LOGIN)
                 .build();
+
+
 
     }
 
@@ -103,9 +123,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener,
     protected void onStop() {
         super.onStop();
         //disconnect GoogleApiClient
-        if (mGoogleApiClient.isConnected()) {
-            mGoogleApiClient.disconnect();
-        }
+        mGoogleApiClient.disconnect();
     }
 
     private void resolveSignInError() {
@@ -162,22 +180,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener,
     @Override
     public void onConnected(Bundle arg0) {
         mShouldResolve = false;
-        try {
-            if (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null) {
-                Person person = Plus.PeopleApi
-                        .getCurrentPerson(mGoogleApiClient);
-                String personName = person.getDisplayName();
-                String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
 
-                Toast.makeText(getApplicationContext(),
-                        "You are Logged In " + personName, Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(getApplicationContext(),
-                        "Couldnt Get the Person Info", Toast.LENGTH_SHORT).show();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Toast.makeText(this, "Conectado como: ", Toast.LENGTH_LONG).show();
+
+        getProfileInformation();
 
     }
 
@@ -187,7 +193,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener,
     @Override
     public void onConnectionSuspended(int arg0) {
         mGoogleApiClient.connect();
-        //signInUI();
     }
 
     @Override
@@ -209,17 +214,44 @@ public class Login extends AppCompatActivity implements View.OnClickListener,
         }
     }
 
+    private void getProfileInformation() {
+        try {
+            if (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null) {
+                Person currentPerson = Plus.PeopleApi
+                        .getCurrentPerson(mGoogleApiClient);
+                String personName = currentPerson.getDisplayName();
+                String personPhotoUrl = currentPerson.getImage().getUrl();
+                String personGooglePlusProfile = currentPerson.getUrl();
+                String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
+
+                Log.e(TAG, "Name: " + personName + ", plusProfile: "
+                        + personGooglePlusProfile + ", email: " + email
+                        + ", Image: " + personPhotoUrl);
+
+                tvNombre.setText(personName);
+                tvEmail.setText(email);
+
+            } else {
+                Toast.makeText(getApplicationContext(),
+                        "Person information is null", Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public View onCreateView(
             LayoutInflater inflater,
             ViewGroup container,
             Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.activity_login,container,false);
-
+        tvEmail = (TextView) view.findViewById(R.id.Nombre);
         LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
-        loginButton.setReadPermissions("user_friends");
+        loginButton.setReadPermissions(Arrays.asList("public_profile","email"));
         loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                tvEmail.setText("Id de usuario: "+loginResult.getAccessToken().getUserId());
             }
             @Override
             public void onCancel() {
@@ -231,3 +263,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener,
         return null;
     }
 }
+
+
+

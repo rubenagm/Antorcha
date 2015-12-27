@@ -135,7 +135,7 @@ public class FragmentBuscarEspacio extends Fragment implements GoogleMap.OnMapCl
         geocoder = new Geocoder(getContext(), Locale.getDefault());
         try{
             addresses = geocoder.getFromLocation(posicion.latitude, posicion.longitude,1);
-            ciudad = addresses.get(0).getAddressLine(3);
+            ciudad = addresses.get(0).getAddressLine(1);
         }
         catch (IOException e){
             e.printStackTrace();
