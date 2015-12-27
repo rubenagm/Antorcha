@@ -13,7 +13,6 @@ import android.widget.ListView;
 
 import com.mx.antorcha.AdaptadorSVG.AdaptadorSVG;
 import com.mx.antorcha.Adaptadores.AdaptadorActividadesTabs;
-import com.mx.antorcha.Adaptadores.AdaptadorPerfilTabs;
 import com.mx.antorcha.LibreriaTabsSliding.SlidingTabLayout;
 import com.mx.antorcha.MenuDrawer.AdapterDrawer;
 import com.mx.antorcha.R;
