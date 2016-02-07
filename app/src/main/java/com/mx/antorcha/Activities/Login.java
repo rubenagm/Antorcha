@@ -57,10 +57,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener,
         GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener
 {
 
-    private static final String TAG = "";
     CallbackManager mCallbackManager;
-    private static final int RC_SIGN_IN = 0;
+    private static final int RC_SIGN_IN = 100;
     private GoogleApiClient mGoogleApiClient;
+    private GoogleSignInOptions googleSignInOptions;
     private boolean mIntentInProgress;
     private boolean mShouldResolve;
     private ConnectionResult connectionResult;
@@ -77,7 +77,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener,
 
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         tvNombre = (TextView) findViewById(R.id.Nombre);
-        //tvEmail = (TextView) findViewById(R.id.email);
+        tvEmail = (TextView) findViewById(R.id.email);
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         mCallbackManager = CallbackManager.Factory.create();
@@ -103,11 +103,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener,
         //build GoogleApiClient
         signInButton.setOnClickListener(this);
 
+        googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        signInButton.setSize(SignInButton.SIZE_WIDE);
+        signInButton.setScopes(googleSignInOptions.getScopeArray());
+
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(Plus.API, Plus.PlusOptions.builder().build())
-                .addScope(Plus.SCOPE_PLUS_LOGIN)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
                 .build();
 
 
@@ -162,18 +167,30 @@ public class Login extends AppCompatActivity implements View.OnClickListener,
     protected void onActivityResult(int requestCode, int responseCode,
                                     Intent intent) {
         if (requestCode == RC_SIGN_IN) {
-            if (responseCode != RESULT_OK) {
-                mShouldResolve = false;
-            }
-
-            mIntentInProgress = false;
-
-            if (!mGoogleApiClient.isConnecting()) {
-                mGoogleApiClient.connect();
-            }
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(intent);
+            //Calling a new function to handle signin
+            handleSignInResult(result);
         }
     }
+    private void handleSignInResult(GoogleSignInResult result) {
+        //If the login succeed
+        try{
+        if (result.isSuccess()) {
+            //Getting google account
+            GoogleSignInAccount acct = result.getSignInAccount();
 
+            //Displaying name and email
+            tvNombre.setText(acct.getDisplayName());
+            tvEmail.setText(acct.getEmail());
+
+        } else {
+            //If login fails
+            Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show();
+        }}catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
     /*
    con la coneccion exitosa se manda a llamar onConnected
      */
@@ -197,10 +214,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener,
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.sign_in_button:
-                onSignInClicked();
-                break;
+        if(v == signInButton){
+            signIn();
         }
     }
 
@@ -213,6 +228,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener,
             resolveSignInError();
         }
     }
+    private void signIn() {
+        //Creating an intent
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+
+        //Starting intent for result
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
 
     private void getProfileInformation() {
         try {
@@ -224,9 +246,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener,
                 String personGooglePlusProfile = currentPerson.getUrl();
                 String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
 
-                Log.e(TAG, "Name: " + personName + ", plusProfile: "
+               /* Log.e(TAG, "Name: " + personName + ", plusProfile: "
                         + personGooglePlusProfile + ", email: " + email
-                        + ", Image: " + personPhotoUrl);
+                        + ", Image: " + personPhotoUrl);*/
 
                 tvNombre.setText(personName);
                 tvEmail.setText(email);

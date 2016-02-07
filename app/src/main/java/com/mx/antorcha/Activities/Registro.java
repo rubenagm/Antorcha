@@ -47,19 +47,19 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         setContentView(R.layout.activity_login);
 
         //se carga la barra de android por el xml
-        Toolbar toolbar = (Toolbar) findViewById(R.id.registro_toolbar);
-        setSupportActionBar(toolbar);
+      //  Toolbar toolbar = (Toolbar) findViewById(R.id.registro_toolbar);
+        //setSupportActionBar(toolbar);
 
         //se cargan las imagenes de la barra
-        ImageView imageViewAtras = (ImageView) findViewById(R.id.registro_toolbar_atras);
-        ImageView imageViewO = (ImageView) findViewById(R.id.registro_imagen_o);
-        ImageView imageViewRegistrarse = (ImageView) findViewById(R.id.registro_boton_registrarse);
+        //ImageView imageViewAtras = (ImageView) findViewById(R.id.registro_toolbar_atras);
+      //  ImageView imageViewO = (ImageView) findViewById(R.id.registro_imagen_o);
+      ///  ImageView imageViewRegistrarse = (ImageView) findViewById(R.id.registro_boton_registrarse);
 
-        AdaptadorSVG.mostrarImagen(imageViewAtras, this, R.raw.icono_regresar);
-        AdaptadorSVG.mostrarImagen(imageViewO, this, R.raw.icono_o);
+       // AdaptadorSVG.mostrarImagen(imageViewAtras, this, R.raw.icono_regresar);
+       // AdaptadorSVG.mostrarImagen(imageViewO, this, R.raw.icono_o);
 
         /*** TEMPORAL ***/
-        AdaptadorSVG.mostrarImagen(imageViewRegistrarse, this, R.raw.boton_guardar_meta);
+       // AdaptadorSVG.mostrarImagen(imageViewRegistrarse, this, R.raw.boton_guardar_meta);
 
 
         FacebookSdk.sdkInitialize(getApplicationContext());

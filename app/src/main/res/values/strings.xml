@@ -10,5 +10,20 @@
     <string name="signed_in_fmt">Signed in as: %s</string>
     <string name="title_activity_maps">Map</string>
 
+    //Srtrings GCM
+    <string name="server_registered"></string>
+    <string name="server_register_error"></string>
+    <string name="server_unregister_error"></string>
+    <string name="server_unregistered"></string>
+    <string name="gcm_registered">From GCM: device successfully registered!</string>
+    <string name="gcm_unregistered">From GCM: device successfully unregistered!</string>
+    <string name="gcm_message">From GCM: you got message!</string>
+    <string name="gcm_error">From GCM: error (%1$s).</string>
+    <string name="gcm_recoverable_error">From GCM: recoverable error (%1$s).</string>
+    <string name="gcm_deleted">From GCM: server deleted %1$d pending messages!</string>
+    <string name="error_config">Please set the %1$s constant and recompile the app.</string>
+    <string name="already_registered">Device is already registered on server.</string>
+    <string name="google_app_id">906946575566</string>
+
 
 </resources>
